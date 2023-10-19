@@ -3,9 +3,9 @@ package com.example.lab3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean requiresCleaning = false;
 
+    private boolean isEmpty = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,37 +46,47 @@ public class MainActivity extends AppCompatActivity {
         if (requiresCleaning) {
             requiresCleaning = false;
             hasDot = false;
+            isEmpty = true;
             resultText.setText("");
+        }
+        Log.d("result",resultText.getText().toString());
+
+        String resultTextCurrent;
+        if(!isEmpty) {
+            resultTextCurrent = resultText.getText().toString();
+        } else {
+            resultTextCurrent = "";
         }
 
         if (pressID == R.id.press0) {
-            resultText.setText(resultText.getText() + "0");
+            resultText.setText(resultTextCurrent + "0");
         } else if (pressID == R.id.press1) {
-            resultText.setText(resultText.getText() + "1");
+            resultText.setText(resultTextCurrent + "1");
         } else if (pressID == R.id.press2) {
-            resultText.setText(resultText.getText() + "2");
+            resultText.setText(resultTextCurrent + "2");
         } else if (pressID == R.id.press3) {
-            resultText.setText(resultText.getText() + "3");
+            resultText.setText(resultTextCurrent + "3");
         } else if (pressID == R.id.press4) {
-            resultText.setText(resultText.getText() + "4");
+            resultText.setText(resultTextCurrent + "4");
         } else if (pressID == R.id.press5) {
-            resultText.setText(resultText.getText() + "5");
+            resultText.setText(resultTextCurrent + "5");
         } else if (pressID == R.id.press6) {
-            resultText.setText(resultText.getText() + "6");
+            resultText.setText(resultTextCurrent + "6");
         } else if (pressID == R.id.press7) {
-            resultText.setText(resultText.getText() + "7");
+            resultText.setText(resultTextCurrent + "7");
         } else if (pressID == R.id.press8) {
-            resultText.setText(resultText.getText() + "8");
+            resultText.setText(resultTextCurrent + "8");
         } else if (pressID == R.id.press9) {
-            resultText.setText(resultText.getText() + "9");
+            resultText.setText(resultTextCurrent + "9");
         } else if (pressID == R.id.pressDot) {
             if (!hasDot) {
-                resultText.setText(resultText.getText() + ".");
+                resultText.setText(resultTextCurrent + ".");
                 hasDot = true;
             }
         } else {
             resultText.setText("ERROR");
         }
+        isEmpty = false;
 
     }
 
